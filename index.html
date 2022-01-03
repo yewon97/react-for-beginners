@@ -18,6 +18,8 @@
   let counter = 0;
   function countUp() {
     counter = counter + 1;
+    // 리렌더링 하기
+    ReactDOM.render(<Container />, root);
   }
   const Container = () => (
     <div>
