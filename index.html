@@ -33,7 +33,7 @@
   // const container = React.createElement('div', null, [Title, Button]);
   /* 컴포넌트의 첫 글자는 반드시 대문자 
   소문자로 작성하면 react랑 JSX는 HTML button태그라고 생각함 */
-  const Container = (
+  const Container = () => (
     <div>
       <Title /> 
       <Button />
@@ -43,7 +43,7 @@
   // ReactDOM.render(btn, root); 
 
   // ReactDOM.render(container, root);
-  ReactDOM.render(Container, root);
+  ReactDOM.render(<Container />, root);
 </script>
 
 </html>
