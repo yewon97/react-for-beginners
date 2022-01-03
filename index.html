@@ -18,7 +18,9 @@
   let counter = 0;
   function countUp() {
     counter = counter + 1;
-    // 리렌더링 하기
+    render(); // 리렌더링 하기
+  }
+  function render() {
     ReactDOM.render(<Container />, root);
   }
   const Container = () => (
@@ -31,7 +33,7 @@
   // ReactDOM.render(btn, root); 
 
   // ReactDOM.render(container, root);
-  ReactDOM.render(<Container />, root);
+  render(); // 제일 처음페이지 렌더링
 </script>
 
 </html>
