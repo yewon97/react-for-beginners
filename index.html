@@ -15,28 +15,14 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  // const span = React.createElement('span', { id: "sexy-span", style: {color:"red"} }, "Hello, I'm a span");
-  // const h3 = React.createElement('h3', {onMouseEnter: () => console.log('h3 touched')}, "Hello, I'm a span");
-  // const btn = React.createElement('button', {onClick: () => console.log("I'm clicked")}, "Click me");
-
-  // jsx를 이용해서 createElement 대체하기
-  function Title() {
-    return (
-      <h3 id="title" onMouseEnter={() => console.log("h3 touched")}>
-        Hello, I'm a span
-      </h3>
-    );
+  let counter = 0;
+  function countUp() {
+    counter = counter + 1;
   }
-  const Button = () => (<button style={{ backgroundColor: "tomato", }} onClick={() => console.log("I'm clicked")}>Click me</button>);
-
-  // const container = React.createElement('div', null, [h3, btn]);
-  // const container = React.createElement('div', null, [Title, Button]);
-  /* 컴포넌트의 첫 글자는 반드시 대문자 
-  소문자로 작성하면 react랑 JSX는 HTML button태그라고 생각함 */
   const Container = () => (
     <div>
-      <Title /> 
-      <Button />
+      <h3>Total Clicks : {counter}</h3>
+      <button onClick={countUp}>Click me</button>
     </div>
   );
   // ReactDOM.render(span, root); 
