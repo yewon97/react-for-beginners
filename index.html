@@ -23,12 +23,14 @@
   function render() {
     ReactDOM.render(<Container />, root);
   }
-  const Container = () => (
+  function Container() {  
+    return (
     <div>
       <h3>Total Clicks : {counter}</h3>
       <button onClick={countUp}>Click me</button>
     </div>
-  );
+    );
+  }
   // ReactDOM.render(span, root); 
   // ReactDOM.render(btn, root); 
 
