@@ -3,6 +3,7 @@
 
 <body>
   <div id="root"></div>
+  <!--  -->
 </body>
 <!-- React JS는 어플리케이션이 아주 interactive하도록 만들어주는 library 
   -> 엔진, interactive한 UI만들게 해줌
@@ -19,17 +20,30 @@
   // const btn = React.createElement('button', {onClick: () => console.log("I'm clicked")}, "Click me");
 
   // jsx를 이용해서 createElement 대체하기
-  const Title = (
-    <h3 id="title" onMouseEnter={() => console.log("h3 touched")}>
-      Hello, I'm a span
-    </h3>
-  );
-  const Button = (<button style={{ backgroundColor: "tomato", }} onClick={() => console.log("I'm clicked")}>Click me</button>);
+  function Title() {
+    return (
+      <h3 id="title" onMouseEnter={() => console.log("h3 touched")}>
+        Hello, I'm a span
+      </h3>
+    );
+  }
+  const Button = () => (<button style={{ backgroundColor: "tomato", }} onClick={() => console.log("I'm clicked")}>Click me</button>);
+
   // const container = React.createElement('div', null, [h3, btn]);
-  const container = React.createElement('div', null, [Title, Button]);
+  // const container = React.createElement('div', null, [Title, Button]);
+  /* 컴포넌트의 첫 글자는 반드시 대문자 
+  소문자로 작성하면 react랑 JSX는 HTML button태그라고 생각함 */
+  const Container = (
+    <div>
+      <Title /> 
+      <Button />
+    </div>
+  );
   // ReactDOM.render(span, root); 
   // ReactDOM.render(btn, root); 
-  ReactDOM.render(container, root);
+
+  // ReactDOM.render(container, root);
+  ReactDOM.render(Container, root);
 </script>
 
 </html>
