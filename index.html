@@ -15,7 +15,7 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  
+
   function App() {
     // useState(default data) : [data, data를 수정하기 위한 함수]
     const [minutes, setMinutes] = React.useState(0);
@@ -31,12 +31,12 @@
         <h1 className="hi">Super Converter</h1>
         <div>
           <label htmlFor="minutes">Minutes</label>
-          <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={flipped === true} />
+          <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={flipped} />
         </div>
 
         <div>
           <label htmlFor="hours">Hours</label>
-          <input value={Math.floor(minutes/60)} id="hours" placeholder="Hours" type="number" disabled={flipped === false} />
+          <input value={Math.floor(minutes / 60)} id="hours" placeholder="Hours" type="number" disabled={!flipped} />
         </div>
         <button onClick={reset}>Reset</button>
         <button onClick={onFlip}>Flip</button>
