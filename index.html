@@ -15,26 +15,16 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  function App() {  
-    // 상수 생성
-    const [counter, setCounter] = React.useState(0);
-    const onClick = () => {
-      /* 둘 다 현재의 state을 가지고 새로운 값을 계산해내지만 아래쪽이 더 안전 */
-      // setCounter(counter + 1);
-      /* current가 확실히 현재 값이라는걸 보장하고 있다 */
-      setCounter((current) => current + 1)
-    };
+  
+  function App() {
     return (
       <div>
-        <h3>Total Clicks : {counter}</h3>
-        <button onClick={onClick}>Click me</button>
+        <h1>Super Converter</h1>
       </div>
     );
   }
 
-  ReactDOM.render(<App />, root); // 제일 처음페이지 렌더링
+  ReactDOM.render(<App />, root);
 </script>
 
-<!-- 자동으로 렌더링하는 방법 -->
-<!-- 업데이트 된 정보를 보여주고 싶으면 새로운 정보를 가지고 컴포넌트를 리렌더링 해줘야한다. -->
 </html>
