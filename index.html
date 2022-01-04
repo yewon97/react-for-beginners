@@ -17,10 +17,11 @@
   const root = document.getElementById('root');
   function App() {  
     // 상수 생성
-    let [counter, modifier] = React.useState(0);
+    const [counter, modifier] = React.useState(0);
     const onClick = () => {
-      counter = counter + 1;
-      console.log(counter);
+      // 이 modifier 변수가 값도 변경해주고 리렌더링도 같이 해준다.
+      // 직접 리렌더링 해줄 필요없이 react의 함수가 리렌더링도 같이 해준다.
+      modifier(999);
     };
     return (
       <div>
