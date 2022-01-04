@@ -17,12 +17,16 @@
   const root = document.getElementById('root');
   function App() {  
     // 상수 생성
-    const [counter, modifier] = React.useState(0); // countUp 함수를 대신함
+    let [counter, modifier] = React.useState(0);
+    const onClick = () => {
+      counter = counter + 1;
+      console.log(counter);
+    };
     return (
-    <div>
-      <h3>Total Clicks : {counter}</h3>
-      <button>Click me</button>
-    </div>
+      <div>
+        <h3>Total Clicks : {counter}</h3>
+        <button onClick={onClick}>Click me</button>
+      </div>
     );
   }
 
