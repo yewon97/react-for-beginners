@@ -17,7 +17,9 @@
   const root = document.getElementById('root');
   
   function App() {
-    const [minutes, setMinutes] = React.useState();
+    // useState(default data) : [data, data를 수정하기 위한 함수]
+    const [minutes, setMinutes] = React.useState(0);
+    // onChange함수가 없고 default data값이 0이면 값은 절대 수정이 안됨
     const onChange = (event) => {
       setMinutes(event.target.value);
     }
@@ -25,11 +27,15 @@
       // js가 선점한 키워드는 사용하면 안됨. for, class 같은 것들 나중에 오류생김
       <div>
         <h1 className="hi">Super Converter</h1>
-        <label htmlFor="minutes">Minutes</label>
-        <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} />
-        <h4>You Want to Convert {minutes}</h4>
-        <label htmlFor="hours">Hours</label>
-        <input id="hours" placeholder="Hours" type="number" />
+        <div>
+          <label htmlFor="minutes">Minutes</label>
+          <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} />
+        </div>
+
+        <div>
+          <label htmlFor="hours">Hours</label>
+          <input value={minutes} id="hours" placeholder="Hours" type="number" />
+        </div>
       </div>
     );
   }
