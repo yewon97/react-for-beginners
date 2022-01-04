@@ -34,7 +34,7 @@
 
         <div>
           <label htmlFor="hours">Hours</label>
-          <input value={minutes} id="hours" placeholder="Hours" type="number" />
+          <input value={Math.floor(minutes/60)} id="hours" placeholder="Hours" type="number" />
         </div>
       </div>
     );
