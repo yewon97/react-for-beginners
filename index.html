@@ -18,8 +18,8 @@
   
   function App() {
     const [minutes, setMinutes] = React.useState();
-    const onChange = () => {
-      console.log('somebody wrote');
+    const onChange = (event) => {
+      setMinutes(event.target.value);
     }
     return (
       // js가 선점한 키워드는 사용하면 안됨. for, class 같은 것들 나중에 오류생김
@@ -27,6 +27,7 @@
         <h1 className="hi">Super Converter</h1>
         <label htmlFor="minutes">Minutes</label>
         <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} />
+        <h4>You Want to Convert {minutes}</h4>
         <label htmlFor="hours">Hours</label>
         <input id="hours" placeholder="Hours" type="number" />
       </div>
