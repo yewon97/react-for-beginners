@@ -18,8 +18,13 @@
   
   function App() {
     return (
+      // js가 선점한 키워드는 사용하면 안됨. for, class 같은 것들 나중에 오류생김
       <div>
-        <h1>Super Converter</h1>
+        <h1 className="hi">Super Converter</h1>
+        <label htmlFor="minutes">Minutes</label>
+        <input id="minutes" placeholder="Minutes" type="number" />
+        <label htmlFor="hours">Hours</label>
+        <input id="hours" placeholder="Hours" type="number" />
       </div>
     );
   }
