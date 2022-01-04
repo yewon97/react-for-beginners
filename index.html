@@ -19,8 +19,10 @@
     // 상수 생성
     const [counter, setCounter] = React.useState(0);
     const onClick = () => {
-      // 리액트는 바뀌는 부분만 인식해서 그 부분만 리렌더링 한다.
-      setCounter(counter + 1);
+      /* 둘 다 현재의 state을 가지고 새로운 값을 계산해내지만 아래쪽이 더 안전 */
+      // setCounter(counter + 1);
+      /* current가 확실히 현재 값이라는걸 보장하고 있다 */
+      setCounter((current) => current + 1)
     };
     return (
       <div>
