@@ -15,27 +15,18 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  let counter = 0;
-  function countUp() {
-    counter = counter + 1;
-    render(); // 리렌더링 하기
-  }
-  function render() {
-    ReactDOM.render(<Container />, root);
-  }
-  function Container() {  
+  function App() {  
     return (
     <div>
-      <h3>Total Clicks : {counter}</h3>
-      <button onClick={countUp}>Click me</button>
+      <h3>Total Clicks : 0</h3>
+      <button>Click me</button>
     </div>
     );
   }
-  // ReactDOM.render(span, root); 
-  // ReactDOM.render(btn, root); 
 
-  // ReactDOM.render(container, root);
-  render(); // 제일 처음페이지 렌더링
+  ReactDOM.render(<App />, root); // 제일 처음페이지 렌더링
 </script>
 
+<!-- 자동으로 렌더링하는 방법 -->
+<!-- 업데이트 된 정보를 보여주고 싶으면 새로운 정보를 가지고 컴포넌트를 리렌더링 해줘야한다. -->
 </html>
