@@ -19,27 +19,27 @@
   function App() {
     // useState(default data) : [data, data를 수정하기 위한 함수]
     const [amount, setAmount] = React.useState(0);
-    const [flipped, setFlipped] = React.useState(false);
+    const [inverted, setInverted] = React.useState(false);
     const onChange = (event) => {
       setAmount(event.target.value);
     }
     const reset = () => setAmount(0);
-    const onFlip = () => setFlipped((current) => !current);
+    const onInvert = () => setInverted((current) => !current);
     return (
       // js가 선점한 키워드는 사용하면 안됨. for, class 같은 것들 나중에 오류생김
       <div>
         <h1 className="hi">Super Converter</h1>
         <div>
           <label htmlFor="minutes">Minutes</label>
-          <input value={flipped ? amount*60 : amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={flipped} />
+          <input value={inverted ? amount*60 : amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={inverted} />
         </div>
 
         <div>
           <label htmlFor="hours">Hours</label>
-          <input value={flipped ? amount : Math.floor(amount / 60)} id="hours" placeholder="Hours" type="number" disabled={!flipped} onChange={onChange} />
+          <input value={inverted ? amount : Math.floor(amount / 60)} id="hours" placeholder="Hours" type="number" disabled={!inverted} onChange={onChange} />
         </div>
         <button onClick={reset}>Reset</button>
-        <button onClick={onFlip}>Flip</button>
+        <button onClick={onInvert}>{inverted ? "Turn back" : "Invert"}</button>
       </div>
     );
   }
