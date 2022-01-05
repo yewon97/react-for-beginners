@@ -16,7 +16,7 @@
 <script type="text/babel">
   const root = document.getElementById('root');
 
-  function App() {
+  function MinutesToHours() {
     // useState(default data) : [data, data를 수정하기 위한 함수]
     const [amount, setAmount] = React.useState(0);
     const [inverted, setInverted] = React.useState(false);
@@ -24,11 +24,13 @@
       setAmount(event.target.value);
     }
     const reset = () => setAmount(0);
-    const onInvert = () => setInverted((current) => !current);
+    const onInvert = () => {
+      reset();
+      setInverted((current) => !current)
+    };
     return (
       // js가 선점한 키워드는 사용하면 안됨. for, class 같은 것들 나중에 오류생김
       <div>
-        <h1 className="hi">Super Converter</h1>
         <div>
           <label htmlFor="minutes">Minutes</label>
           <input value={inverted ? amount*60 : amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={inverted} />
@@ -40,6 +42,17 @@
         </div>
         <button onClick={reset}>Reset</button>
         <button onClick={onInvert}>{inverted ? "Turn back" : "Invert"}</button>
+      </div>
+    );
+  }
+  function KmToMiles() {
+    return <h3>KM 2 M</h3>
+  }
+  function App() {
+    return (
+      <div>
+        <h1 className="hi">Super Converter</h1>
+        <MinutesToHours />
       </div>
     );
   }
