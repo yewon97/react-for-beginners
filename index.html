@@ -15,11 +15,9 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  function Btn({ text, onClick }) {
-    console.log(text, 'was rendered');
+  function Btn({ text, fontSize }) {
     return (
       <button
-        onClick={onClick}
         style={{
           backgroundColor: "tomato",
           color: "white",
@@ -27,6 +25,7 @@
           border: 0,
           borderRadius: 10,
           cursor: 'pointer',
+          fontSize,
         }}>
         {text}
       </button>
@@ -38,13 +37,13 @@
     const changeValue = () => setValue('Revert Changes')
     return (
       <div>
-        <MemorizedBtn text={value} onClick={changeValue} />
+        <MemorizedBtn text={value} fontSize={30} />
         {
-          // props가 변하지 않으면 리렌더링 안되게 할 수 있다.
-          // 하지만 props값이 바뀌면 리렌더링 해줘야한다.
-          // 리렌더링 해야할 컴포넌트가 많아지면 이렇게 변화된 것만 리렌더링 되게끔 해줘야한다.
+          // 아래 문장은 문법 상에 문제는 없지만, 의미상의 문제가 있다.
+          // 화면에는 오류 없이 보여지지만 오류인 것이다.
+          // 오류를 확인할 수 있는 코드를 만들면 좋을 것 같다.
         }
-        <MemorizedBtn text="Continue" />
+        <MemorizedBtn text={14} fontSize={"Continue"} />
       </div>
     )
   }
