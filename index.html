@@ -15,7 +15,8 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  function SaveBtn() {
+  function Btn(props) {
+    console.log(props);
     return (
       <button style={{
         backgroundColor: "tomato",
@@ -23,25 +24,16 @@
         padding: "10px 20px",
         border: 0,
         borderRadius: 10,
-      }}>Save Changes</button>
-    );
-  }
-  function ConfirmBtn() {
-    return (
-      <button style={{
-        backgroundColor: "tomato",
-        color: "white",
-        padding: "10px 20px",
-        border: 0,
-        borderRadius: 10,
-      }}>Confirm</button>
+      }}>
+        {props.banana}
+      </button>
     );
   }
   function App() {
     return (
       <div>
-        <SaveBtn />
-        <ConfirmBtn />
+        <Btn banana="Save Changes" x={false} />
+        <Btn banana="Continue" y={7} />
       </div>
     )
   }
