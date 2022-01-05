@@ -8,11 +8,13 @@
 <!-- React JS는 어플리케이션이 아주 interactive하도록 만들어주는 library 
   -> 엔진, interactive한 UI만들게 해줌
 -->
-<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 <!-- React-dom은 library또는 package인데, 모든 react element들을 HTML body에 둘 수 있도록 해줌 -->
 <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 <!-- jsx를 browser가 읽을 수 있게 babel을 이용해서 변환 -->
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!-- prop의 타입을 알려주는 스크립트 파일 -->
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
   function Btn({ text, fontSize }) {
@@ -31,19 +33,17 @@
       </button>
     );
   }
-  const MemorizedBtn = React.memo(Btn);
+  Btn.propTypes = {
+    text: PropTypes.string,
+    fontSize: PropTypes.number,
+  };
   function App() {
     const [value, setValue] = React.useState("Save Changes");
     const changeValue = () => setValue('Revert Changes')
     return (
       <div>
-        <MemorizedBtn text={value} fontSize={30} />
-        {
-          // 아래 문장은 문법 상에 문제는 없지만, 의미상의 문제가 있다.
-          // 화면에는 오류 없이 보여지지만 오류인 것이다.
-          // 오류를 확인할 수 있는 코드를 만들면 좋을 것 같다.
-        }
-        <MemorizedBtn text={14} fontSize={"Continue"} />
+        <Btn text={value} fontSize={30} />
+        <Btn text={14} fontSize={"Continue"} />
       </div>
     )
   }
