@@ -15,26 +15,33 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  function Btn({banana, big}) {
-    console.log(banana, big);
+  function Btn({text, onClick}) {
     return (
-      <button style={{
+      <button 
+      onClick={onClick}
+      style={{
         backgroundColor: "tomato",
         color: "white",
         padding: "10px 20px",
         border: 0,
         borderRadius: 10,
-        fontSize: big ? 18 : 12,
+        cursor:'pointer',
       }}>
-        {banana}
+        {text}
       </button>
     );
   }
   function App() {
+    const [value, setValue] = React.useState("Save Changes");
+    const changeValue = () => setValue('Revert Changes')
     return (
       <div>
-        <Btn banana="Save Changes" x={false} big={true} />
-        <Btn banana="Continue" y={7} big={false} />
+        {
+          // 커스텀 컴포넌트에 들어가는 onClick은 이벤트 리스너가 아니다! 그냥 prop
+          // Btn 함수 안에 button 태그안에 들어가는 것이 이벤트 리스너이다.
+        }
+        <Btn text={value} onClick={changeValue} />
+        <Btn text="Continue" />
       </div>
     )
   }
