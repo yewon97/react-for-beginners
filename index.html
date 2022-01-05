@@ -15,33 +15,36 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  function Btn({text, onClick}) {
+  function Btn({ text, onClick }) {
+    console.log(text, 'was rendered');
     return (
-      <button 
-      onClick={onClick}
-      style={{
-        backgroundColor: "tomato",
-        color: "white",
-        padding: "10px 20px",
-        border: 0,
-        borderRadius: 10,
-        cursor:'pointer',
-      }}>
+      <button
+        onClick={onClick}
+        style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: "10px 20px",
+          border: 0,
+          borderRadius: 10,
+          cursor: 'pointer',
+        }}>
         {text}
       </button>
     );
   }
+  const MemorizedBtn = React.memo(Btn);
   function App() {
     const [value, setValue] = React.useState("Save Changes");
     const changeValue = () => setValue('Revert Changes')
     return (
       <div>
+        <MemorizedBtn text={value} onClick={changeValue} />
         {
-          // 커스텀 컴포넌트에 들어가는 onClick은 이벤트 리스너가 아니다! 그냥 prop
-          // Btn 함수 안에 button 태그안에 들어가는 것이 이벤트 리스너이다.
+          // props가 변하지 않으면 리렌더링 안되게 할 수 있다.
+          // 하지만 props값이 바뀌면 리렌더링 해줘야한다.
+          // 리렌더링 해야할 컴포넌트가 많아지면 이렇게 변화된 것만 리렌더링 되게끔 해줘야한다.
         }
-        <Btn text={value} onClick={changeValue} />
-        <Btn text="Continue" />
+        <MemorizedBtn text="Continue" />
       </div>
     )
   }
