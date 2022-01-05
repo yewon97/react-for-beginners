@@ -16,6 +16,7 @@
 <script type="text/babel">
   const root = document.getElementById('root');
 
+  // 캡슐화 시켰다!
   function MinutesToHours() {
     // useState(default data) : [data, data를 수정하기 위한 함수]
     const [amount, setAmount] = React.useState(0);
@@ -29,7 +30,6 @@
       setInverted((current) => !current)
     };
     return (
-      // js가 선점한 키워드는 사용하면 안됨. for, class 같은 것들 나중에 오류생김
       <div>
         <div>
           <label htmlFor="minutes">Minutes</label>
@@ -46,7 +46,31 @@
     );
   }
   function KmToMiles() {
-    return <h3>KM 2 M</h3>
+    const [amount, setAmount] = React.useState(0);
+    const [inverted, setInverted] = React.useState(false);
+    const onChange = (event) => {
+      setAmount(event.target.value);
+    }
+    const reset = () => setAmount(0);
+    const onInvert = () => {
+      reset();
+      setInverted((current) => !current)
+    };
+    return (
+      <div>
+        <div>
+          <label htmlFor="kilometer">Kilometer</label>
+          <input value={inverted ? Math.round(amount / 0.62137) : amount} id="kilometer" placeholder="Kilometer" type="number" onChange={onChange} disabled={inverted} />
+        </div>
+
+        <div>
+          <label htmlFor="mile">Mile</label>
+          <input value={inverted ? amount : amount*0.62137} id="mile" placeholder="Mile" type="number" disabled={!inverted} onChange={onChange} />
+        </div>
+        <button onClick={reset}>Reset</button>
+        <button onClick={onInvert}>{inverted ? "Turn back" : "Invert"}</button>
+      </div>
+    );
   }
   function App() {
     const [index, setIndex] = React.useState("xx");
