@@ -15,8 +15,8 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  function Btn({banana}) {
-    // console.log(props);
+  function Btn({banana, big}) {
+    console.log({banana, big});
     return (
       <button style={{
         backgroundColor: "tomato",
@@ -32,7 +32,7 @@
   function App() {
     return (
       <div>
-        <Btn banana="Save Changes" x={false} />
+        <Btn banana="Save Changes" x={false} big={true} />
         <Btn banana="Continue" y={7} />
       </div>
     )
