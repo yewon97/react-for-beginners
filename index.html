@@ -15,8 +15,8 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  function Btn(props) {
-    console.log(props);
+  function Btn({banana}) {
+    // console.log(props);
     return (
       <button style={{
         backgroundColor: "tomato",
@@ -25,7 +25,7 @@
         border: 0,
         borderRadius: 10,
       }}>
-        {props.banana}
+        {banana}
       </button>
     );
   }
